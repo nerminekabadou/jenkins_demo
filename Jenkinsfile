@@ -27,15 +27,17 @@ pipeline {
         // Exécution des tests
         stage('Exécuter les tests') {
             steps {
-                echo 'Lancement des tests unitaires...'
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit '**/target/surefire-reports/*.xml'
+                script {
+                    if (fileExists('src/test/java')) {
+                        sh 'mvn test'
+                        junit '**/target/surefire-reports/*.xml'
+                    } else {
+                        echo "No test sources found, skipping tests."
+                    }
                 }
             }
         }
+
 
         // Construire l'image Docker
         stage('Construire l’image Docker') {
