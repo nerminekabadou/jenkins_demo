@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = 'dockerhub-creds'
-        DOCKER_IMAGE = 'nermineaziza03/nom_image'
+        DOCKER_IMAGE = 'nermineaziza03/springboot-jenkins'
         APP_VERSION = '1.0'
     }
 
