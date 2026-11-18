@@ -4,6 +4,10 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    ignore:
+      # Spring Boot majors need a planned migration (4.x fails the build); keep minor/patch updates.
+      - dependency-name: "org.springframework.boot:spring-boot-starter-parent"
+        update-types: ["version-update:semver-major"]
     groups:
       maven-dependencies:
         patterns: ["*"]
